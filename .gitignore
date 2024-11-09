@@ -14,6 +14,7 @@ instance/*
 .env
 flask_session
 input_image.jpg
+input_image.png
 result_image.jpg
 rotated_image.jpg
 
