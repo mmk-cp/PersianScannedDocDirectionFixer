@@ -8,7 +8,7 @@ import sys
 if sys.platform.startswith('win'):
     pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
-input_image_path = "input_image.jpg"
+input_image_path = "input_image.png"
 
 # Load the image
 image = cv2.imread(input_image_path)
