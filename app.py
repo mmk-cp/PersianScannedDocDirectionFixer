@@ -8,8 +8,10 @@ import sys
 if sys.platform.startswith('win'):
     pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
+input_image_path = "input_image.jpg"
+
 # Load the image
-image = cv2.imread('input_image.jpg')
+image = cv2.imread(input_image_path)
 
 # Convert to grayscale and apply Gaussian blur to reduce noise
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -79,7 +81,7 @@ else:
     print("Document contour not found.")
 
 # Load either the warped or original image for the next steps
-image = cv2.imread(result_path if use_result_image else 'input_image.jpg')
+image = cv2.imread(result_path if use_result_image else input_image_path)
 
 
 def rotate_image(image, angle):
