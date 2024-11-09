@@ -2,8 +2,14 @@ import numpy as np
 import cv2
 import pytesseract
 from pytesseract import Output
+import sys
 
-image = cv2.imread('image.jpg')
+if sys.platform.startswith('linux') or sys.platform.startswith('darwin'):
+    pass
+else:
+    pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+
+image = cv2.imread('input_image.jpg')
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 blurred = cv2.GaussianBlur(gray, (5, 5), 0)
@@ -28,6 +34,8 @@ for contour in contours:
     if len(approx) == 4:
         document_contour = approx
         break
+
+use_result_image = False
 
 # If a document contour is found, perform the perspective transform
 if document_contour is not None:
@@ -64,13 +72,15 @@ if document_contour is not None:
     # Save the warped (scanned) document image with a new name
     result_path = 'result_image.jpg'  # Change this to your desired path and name
     cv2.imwrite(result_path, warped)
-
-
+    use_result_image = True
 else:
     print("Document contour could not be found.")
 
 # Load the image
-image = cv2.imread('result_image.jpg')
+if use_result_image:
+    image = cv2.imread('result_image.jpg')
+else:
+    image = cv2.imread('input_image.jpg')
 
 
 def rotate_image(image, angle):

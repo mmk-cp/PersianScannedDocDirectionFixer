@@ -13,6 +13,9 @@ instance/*
 .webassets-cache
 .env
 flask_session
+input_image.jpg
+result_image.jpg
+rotated_image.jpg
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
