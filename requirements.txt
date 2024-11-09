@@ -1,0 +1,4 @@
+opencv-python
+opencv-python-headless
+pytesseract
+pillow
